@@ -1,6 +1,6 @@
 # infrastructure_demo
 
-*requirements:*
+**requirements:**
 _docker 20.10.12_
 _minikube 1.25.2_
 _kubectl 1.19.15_
