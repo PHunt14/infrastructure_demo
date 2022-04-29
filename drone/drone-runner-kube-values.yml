@@ -1,5 +1,22 @@
+## Each namespace listed below will be configured such that the runner can run build Pods in
+## it. This comes in the form of a Role and a RoleBinding. If you change env.DRONE_NAMESPACE_DEFAULT
+## or the other DRONE_NAMESPACE_* variables, make sure to update this list to include all
+## namespaces.
+rbac:
+  buildNamespaces:
+    - drone
+
 env:
-  DRONE_RPC_HOST: 82e7-69-243-28-200.ngrok.io
-  DRONE_RPC_PROTO: https
+  ## REQUIRED: Set the secret secret token that the Kubernetes runner and its runners will use
+  ## to authenticate. This is commented out in order to leave you the ability to set the
+  ## key via a separately provisioned secret (see existingSecretName above).
+  ## Ref: https://kube-runner.docs.drone.io/installation/reference/drone-rpc-secret/
+  ##
+  # NOTE TO READER: Change this to match the DRONE_RPC_SECRET secret set in your drone server configs. 
+  #DRONE_RPC_SECRET: nMwUddXWSnEyWROqSIsXXCn3
+  DRONE_RPC_SECRET: secrete_here
+
+  ## Determines the default Kubernetes namespace for Drone builds to run in.
+  ## Ref: https://kube-runner.docs.drone.io/installation/reference/drone-namespace-default/
+  ##
   DRONE_NAMESPACE_DEFAULT: drone
-  DRONE_RPC_SECRET:
