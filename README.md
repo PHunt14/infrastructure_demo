@@ -14,6 +14,15 @@ v2.14.1
 
 # drone-server installation
 
+https://docs.drone.io/server/provider/github/
+
+setup github OAuth app, note Client ID and Secret
+https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app
+Create an RPC secret and note this
+`openssl rand -hex 16`
+
+complete the `drone\drone-values.yml` with your above information
+
 create drone namespace
 `kubectl create namespace drone`
 
@@ -21,12 +30,13 @@ create drone namespace
 
 after executing the helm install this is required (also presented on-screen)
 
-`kubectl create secret generic drone-server-secrets --namespace=drone --from-literal=clientSecret="<secret-here>"`
+this is no longer needed it seems.
+`kubectl create secret generic drone-server-secrets --namespace=drone --from-literal=clientSecret="4be136162792e5dc739b00cef808e907699756cc"`
 
-`helm upgrade drone --reuse-values --set 'sourceControl.provider=github' --set 'sourceControl.github.clientID=<ID-here>' --set 'sourceControl.secret=drone-server-secrets' drone/drone`
+`helm upgrade drone --reuse-values --set 'sourceControl.provider=github' --set 'sourceControl.github.clientID=37844a5998777sd1c455b' --set 'sourceControl.secret=drone-server-secrets' drone/drone`
 
 # drone-runner-kube install
 
-`helm install --namespace drone --name drone-runner-kube drone/drone-runner-kube -f .\drone\drone-runner-kube-values.yml`
+complete the `drone\drone-runner-kube-values.yml` with your shared secret
 
-`helm upgrade drone-runner-kube --namespace drone drone/drone-runner-kube -f .\drone\drone-runner-kube-values.yml`
+`helm install --namespace drone --name drone-runner-kube drone/drone-runner-kube -f .\drone\drone-runner-kube-values.yml`

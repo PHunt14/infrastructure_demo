@@ -1,8 +1,10 @@
+wait: true
+timeout: 300
 env:
   ## REQUIRED: Set the user-visible Drone hostname, sans protocol.
   ## Ref: https://docs.drone.io/installation/reference/drone-server-host/
   ##
-  DRONE_SERVER_HOST: example.host.com
+  DRONE_SERVER_HOST:
   ## The protocol to pair with the value in DRONE_SERVER_HOST (http or https).
   ## Ref: https://docs.drone.io/installation/reference/drone-server-proto/
   ##
@@ -12,9 +14,11 @@ env:
   ## key via a separately provisioned secret (see existingSecretName above).
   ## Ref: https://docs.drone.io/installation/reference/drone-rpc-secret/
   ##
-  DRONE_RPC_SECRET: secret_here
+  DRONE_RPC_SECRET:
 
   ## GitHub provider configuration.
   ## Ref: https://docs.drone.io/installation/providers/github/
-  DRONE_GITHUB_CLIENT_ID: ID_here
-  DRONE_GITHUB_CLIENT_SECRET: secret_here
+  DRONE_GITHUB_CLIENT_ID:
+  DRONE_GITHUB_CLIENT_SECRET:
+  # set a user to the admin user
+  DRONE_USER_CREATE: username:phunt14,machine:false,admin:true

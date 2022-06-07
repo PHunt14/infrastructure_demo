@@ -6,6 +6,8 @@ rbac:
   buildNamespaces:
     - drone
 
+wait: true
+timeout: 300
 env:
   ## REQUIRED: Set the secret secret token that the Kubernetes runner and its runners will use
   ## to authenticate. This is commented out in order to leave you the ability to set the
@@ -13,8 +15,7 @@ env:
   ## Ref: https://kube-runner.docs.drone.io/installation/reference/drone-rpc-secret/
   ##
   # NOTE TO READER: Change this to match the DRONE_RPC_SECRET secret set in your drone server configs. 
-  #DRONE_RPC_SECRET: nMwUddXWSnEyWROqSIsXXCn3
-  DRONE_RPC_SECRET: secrete_here
+  DRONE_RPC_SECRET:
 
   ## Determines the default Kubernetes namespace for Drone builds to run in.
   ## Ref: https://kube-runner.docs.drone.io/installation/reference/drone-namespace-default/
