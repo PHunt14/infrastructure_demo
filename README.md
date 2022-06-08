@@ -30,13 +30,6 @@ create drone namespace
 
 `helm install --name drone --namespace drone drone/drone -f .\drone\drone-values.yml`
 
-after executing the helm install this is required (also presented on-screen)
-
-this is no longer needed it seems.
-`kubectl create secret generic drone-server-secrets --namespace=drone --from-literal=clientSecret="4be136162792e5dc739b00cef808e907699756cc"`
-
-`helm upgrade drone --reuse-values --set 'sourceControl.provider=github' --set 'sourceControl.github.clientID=37844a5998777sd1c455b' --set 'sourceControl.secret=drone-server-secrets' drone/drone`
-
 # drone-runner-kube install
 
 complete the `drone\drone-runner-kube-values.yml` with your shared secret
