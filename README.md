@@ -14,6 +14,8 @@ v2.14.1
 
 # drone-server installation
 
+`helm repo add drone https://charts.drone.io`
+
 https://docs.drone.io/server/provider/github/
 
 setup github OAuth app, note Client ID and Secret
